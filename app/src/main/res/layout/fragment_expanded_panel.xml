@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="68dp"
+    android:orientation="horizontal"
+    android:background="@color/background"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/panel_album_text"
+            android:text="Images and Words"
+            android:textSize="20dp"
+            android:padding="5dp"
+            android:textColor="@color/white"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/panel_author_text"
+            android:text="Dream Theater"
+            android:textColor="@color/white"
+            android:paddingLeft="5dp"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"/>
+    </LinearLayout>
+
+</LinearLayout>

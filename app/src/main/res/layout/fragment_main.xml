@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="tysovsky.skyplayer.Fragments.MainFragment"
+    android:orientation="vertical">
+
+    <com.rey.material.widget.TabIndicatorView
+        android:id="@+id/main_tiv"
+        android:layout_height="48dp"
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:clipToPadding="false"
+        style="@style/LightTabPageIndicator"/>/>
+    <tysovsky.skyplayer.Adapters.MainViewPager
+        android:id="@+id/main_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

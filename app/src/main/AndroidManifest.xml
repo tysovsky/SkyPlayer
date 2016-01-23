@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="tysovsky.skyplayer" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon" >
+        <activity
+            android:name=".Activities.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service android:exported="false" android:name=".Services.MusicService">
+            <intent-filter>
+                <action android:name="tysovsky.skyplayer.action.TOGGLE_PLAYBACK"/>
+                <action android:name="tysovsky.skyplayer.action.PLAY"/>
+                <action android:name="tysovsky.skyplayer.action.PAUSE"/>
+                <action android:name="tysovsky.skyplayer.action.RESUME"/>
+                <action android:name="tysovsky.skyplayer.action.REWIND_TO"/>
+                <action android:name="tysovsky.skyplayer.action.STOP"/>
+                <action android:name="tysovsky.skyplayer.action.SKIP_NEXT"/>
+                <action android:name="tysovsky.skyplayer.action.SKIP_PREVIOUS"/>
+                <action android:name="tysovsky.skyplayer.action.STOP_UPDATING_DURATION"/>
+                <action android:name="tysovsky.skyplayer.action.REQUEST_SONG_UPDATE"/>
+
+
+            </intent-filter>
+        </service>
+
+        <receiver android:name=".MusicIntentReceiver">
+            <intent-filter>
+                <action android:name="android.media.AUDIO_BECOMING_NOISY" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

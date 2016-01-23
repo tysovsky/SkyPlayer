@@ -1,0 +1,284 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        xmlns:sothree="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sliding_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        sothree:umanoPanelHeight="68dp"
+        sothree:umanoShadowHeight="4dp"
+        sothree:umanoParallaxOffset="100dp"
+        sothree:umanoDragView="@+id/dragView"
+        sothree:umanoOverlay="false"
+        sothree:umanoScrollableView="@+id/list">
+
+        <!-- MAIN CONTENT -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.Toolbar
+                    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/main_toolbar"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/colorPrimary"
+                    sothree:theme="@style/ActionBar"
+                    android:titleTextColor="@color/white"
+                    sothree:titleTextColor="@color/white"
+                    android:layout_width="match_parent"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:id="@+id/tab_view">
+
+                    </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <!-- SLIDING LAYOUT -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="false"
+            android:id="@+id/dragView">
+
+            <!--Drag Panel-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="68dp"
+                android:orientation="horizontal"
+                android:id="@+id/pull_up_fragment">
+
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/background">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/album_art_pager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <com.truizlop.fabreveallayout.FABRevealLayout
+                    android:id="@+id/fab_reveal_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fab_reveal_height"
+                    >
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:backgroundTint="@color/fab"
+                        android:id="@+id/fab_reveal_menu"
+                        android:src="@drawable/ic_menu_white"
+                        />
+
+                    <!--Player Controls -->
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:background="@color/colorPrimaryDark"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_centerInParent="true"
+                            android:background="@color/colorPrimary">
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/colorPrimaryDark"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_height="wrap_content"
+                                    android:layout_width="250dp"
+                                    android:id="@+id/player_title_text"
+                                    android:maxLines="1"
+                                    android:scrollHorizontally="true"
+                                    android:ellipsize="end"
+                                    android:text="Take The Time"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    android:layout_margin="16dp"
+                                    android:textColor="@color/white"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/playere_current_duration"
+                                    android:text="00:00"
+                                    android:gravity="right"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="right|bottom"
+                                    android:textColor="@color/white"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/player_song_duration"
+                                    android:text="/07:30"
+                                    android:gravity="right"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_gravity="right|bottom"
+                                    android:textColor="@color/white"/>
+                            </LinearLayout>
+
+                            <SeekBar
+                                style="@style/Material.Widget.Slider"
+                                android:id="@+id/player_song_slider"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="3dip"
+                                android:maxHeight="3dip"
+                                android:padding="0dp"
+                                android:progressDrawable="@drawable/progress_seekbar_background"
+                                android:thumb="@drawable/progress_seekbar_thumb"
+                                android:max="1000"
+                                android:gravity="center"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center">
+                                <ImageButton
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/btn_skip_previous"
+                                    android:background="@null"
+                                    android:id="@+id/player_button_skip_previous"
+                                    android:layout_gravity="center_vertical" />
+                                <ImageButton
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:scaleType="fitXY"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/btn_play"
+                                    android:id="@+id/player_button_play"
+                                    android:background="@null"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"/>
+                                <ImageButton
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:scaleType="fitXY"
+                                    android:id="@+id/player_button_skip_next"
+                                    android:src="@drawable/btn_skip_next"
+                                    android:background="@null"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <!--Options Menu -->
+                    <android.support.v7.widget.GridLayout
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:grid="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        grid:alignmentMode="alignBounds"
+                        grid:columnCount="3"
+                        grid:rowCount="2">
+
+                        <Button android:layout_width="0dp"
+                            style="?buttonStyle"
+                            android:layout_height="0dp"
+                            android:text="@string/album"
+                            android:textColor="@color/white"
+                            android:background="@null"
+                            android:id="@+id/button_album"
+                            grid:layout_columnWeight="1"
+                            grid:layout_rowWeight="1"
+                            grid:layout_gravity="fill"/>
+
+                        <Button android:layout_width="0dp"
+                            style="?buttonStyle"
+                            android:background="@null"
+                            android:layout_height="0dp"
+                            android:text="@string/artist"
+                            android:textColor="@color/white"
+                            android:id="@+id/button_artist"
+                            grid:layout_columnWeight="1"
+                            grid:layout_rowWeight="1"
+                            grid:layout_gravity="fill"/>
+
+                        <Button android:layout_width="0dp"
+                            style="?buttonStyle"
+                            android:background="@null"
+                            android:layout_height="0dp"
+                            android:text="@string/queue"
+                            android:textColor="@color/white"
+                            android:id="@+id/button_queue"
+                            grid:layout_columnWeight="1"
+                            grid:layout_rowWeight="1"
+                            grid:layout_gravity="fill"/>
+                        <Button android:layout_width="0dp"
+                            style="?buttonStyle"
+                            android:background="@null"
+                            android:layout_height="0dp"
+                            android:text="@string/lyrics"
+                            android:textColor="@color/white"
+                            android:id="@+id/button_lyrics"
+                            grid:layout_columnWeight="1"
+                            grid:layout_rowWeight="1"
+                            grid:layout_gravity="fill"/>
+                        <Button android:layout_width="0dp"
+                            style="?buttonStyle"
+                            android:background="@null"
+                            android:layout_height="0dp"
+                            android:text="@string/equalizer"
+                            android:id="@+id/button_equalizer"
+                            grid:layout_columnWeight="1"
+                            android:textColor="@color/white"
+                            grid:layout_rowWeight="1"
+                            grid:layout_gravity="fill"/>
+                        <Button android:layout_width="0dp"
+                            style="?buttonStyle"
+                            android:background="@null"
+                            android:layout_height="0dp"
+                            android:text="@string/edit_tags"
+                            android:textColor="@color/white"
+                            android:id="@+id/button_edit_tags"
+                            grid:layout_columnWeight="1"
+                            grid:layout_rowWeight="1"
+                            grid:layout_gravity="fill"/>
+
+                    </android.support.v7.widget.GridLayout>
+
+                </com.truizlop.fabreveallayout.FABRevealLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+</LinearLayout>
